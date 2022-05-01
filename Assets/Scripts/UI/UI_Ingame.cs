@@ -11,6 +11,8 @@ public class UI_Ingame : MonoBehaviour
     public Text textHighscore;
     public Text textLevel;
     public RectTransform rectProgress;
+    public GameObject buttonStart;
+    public GameObject buttonContinue;
 
     private Coroutine coroutineProgressBar;
 
@@ -28,6 +30,16 @@ public class UI_Ingame : MonoBehaviour
     public static void UpdateLevel()
     {
         Instance.textLevel.text = User.data.level.ToString();
+    }
+
+    public static void SetButtonStart(bool _active)
+    {
+        Instance.buttonStart.SetActive(_active);
+    }
+
+    public static void SetButtonContinue(bool _active)
+    {
+        Instance.buttonContinue.SetActive(_active);
     }
 
     public static void StartProgressBar(float _time)
@@ -79,5 +91,6 @@ public class UI_Ingame : MonoBehaviour
         }
 
         User.state = UserState.Menu;
+        UI_Ingame.SetButtonStart(true);
     }
 }

@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
 
         SpawnPlayer();
         SpawnRandomLevel();
+        UI_Ingame.SetButtonStart(false);
         UI_Ingame.StartProgressBar(Utility.GetLevelTime());
     }
 
