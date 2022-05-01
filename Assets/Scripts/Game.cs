@@ -16,15 +16,21 @@ public class Game : MonoBehaviour
 
         InitManagers();
 
+        User.Load();
         LevelManager.StartLevel();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.E))
         {
             LevelManager.StartLevel();
         }
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus) User.Save();
     }
 
     private void InitManagers()

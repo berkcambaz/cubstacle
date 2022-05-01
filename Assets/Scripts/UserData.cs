@@ -4,21 +4,42 @@ using UnityEngine;
 
 public class User
 {
-    SaveData data = new SaveData();
+    public static SaveData data = new SaveData();
     public static bool playing = false;
 
     public static void Save()
     {
-
+        try
+        {
+            string json = JsonUtility.ToJson(data);
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/user.save", json);
+        }
+        catch (System.Exception _e)
+        {
+            Debug.Log(_e);
+        }
     }
 
     public static void Load()
     {
-
+        try
+        {
+            string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/user.save");
+            data = JsonUtility.FromJson<SaveData>(json);
+        }
+        catch (System.Exception _e)
+        {
+            Debug.Log(_e);
+            Save();
+        }
     }
 }
 
+[System.Serializable]
 public class SaveData
 {
-
+    public int score = 0;
+    public int highscore = 0;
+    public int level = 1;
+    public int gold = 0;
 }
