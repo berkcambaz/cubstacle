@@ -5,7 +5,9 @@ using UnityEngine;
 public class User
 {
     public static SaveData data = new SaveData();
-    public static bool playing = false;
+    public static bool canStart = true;
+    public static bool alive = false;
+    public static bool paused = false;
 
     public static void Save()
     {
@@ -26,6 +28,9 @@ public class User
         {
             string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/user.save");
             data = JsonUtility.FromJson<SaveData>(json);
+
+            UI_Ingame.UpdateScore();
+            UI_Ingame.UpdateLevel();
         }
         catch (System.Exception _e)
         {

@@ -5,7 +5,78 @@ using UnityEngine.UI;
 
 public class UI_Ingame : MonoBehaviour
 {
+    public static UI_Ingame Instance;
+
     public Text textScore;
     public Text textHighscore;
     public Text textLevel;
+    public RectTransform rectProgress;
+
+    private Coroutine coroutineProgressBar;
+
+    public void Init()
+    {
+        Instance = this;
+    }
+
+    public static void UpdateScore()
+    {
+        Instance.textScore.text = User.data.score.ToString();
+        Instance.textHighscore.text = User.data.highscore.ToString();
+    }
+
+    public static void UpdateLevel()
+    {
+        Instance.textLevel.text = User.data.level.ToString();
+    }
+
+    public static void StartProgressBar(float _time)
+    {
+        Instance.coroutineProgressBar = Instance.StartCoroutine(Instance.StartProgress(_time));
+    }
+
+    public static void StopProgressBar()
+    {
+        Instance.StopCoroutine(Instance.coroutineProgressBar);
+        Instance.StartCoroutine(Instance.StopProgress());
+    }
+
+    private IEnumerator StartProgress(float _time)
+    {
+        Vector3 current = rectProgress.localScale;
+        Vector3 target = new Vector3(1f, 1f, 1f);
+
+        float currentTime = 0;
+        float normalizedValue = 0;
+
+        while (User.alive)
+        {
+            while (!User.paused)
+            {
+                if (currentTime > _time) yield break;
+                currentTime += Time.deltaTime;
+                normalizedValue = currentTime / _time;
+                rectProgress.localScale = Vector3.Lerp(current, target, normalizedValue);
+                yield return null;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator StopProgress()
+    {
+        Vector3 current = rectProgress.localScale;
+        Vector3 target = new Vector3(0f, 1f, 1f);
+
+        float currentTime = 0;
+        float normalizedValue = 0;
+
+        while (currentTime <= current.x / 2f)
+        {
+            currentTime += Time.deltaTime;
+            normalizedValue = currentTime / (current.x / 2f);
+            rectProgress.localScale = Vector3.Lerp(current, target, normalizedValue);
+            yield return null;
+        }
+    }
 }

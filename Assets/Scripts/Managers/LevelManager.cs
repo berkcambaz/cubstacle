@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private GameObject player;
     private List<GameObject> levels = new List<GameObject>();
+    private Coroutine coroutineLevel;
 
     public void Init()
     {
@@ -19,21 +21,42 @@ public class LevelManager : MonoBehaviour
         InitLevels();
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            StartLevel();
+        }
+    }
+
     public static void StartLevel()
     {
-        if (User.playing) return;
-        User.playing = true;
+        if (User.alive) return;
+        User.alive = true;
+        Instance.coroutineLevel = Instance.StartCoroutine(Instance.CoroutineLevel(Utility.GetLevelTime()));
 
         SpawnPlayer();
         SpawnRandomLevel();
+        UI_Ingame.StartProgressBar(Utility.GetLevelTime());
     }
 
     public static void StopLevel()
     {
-        User.playing = false;
+        if (!User.alive) return;
+        User.alive = false;
+        Instance.StopCoroutine(Instance.coroutineLevel);
 
         DespawnPlayer();
         DespawnLevels();
+        UI_Ingame.UpdateLevel();
+        UI_Ingame.StopProgressBar();
+    }
+
+    private IEnumerator CoroutineLevel(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        StopLevel();
+        ++User.data.level;
     }
 
     public static void Progress()
