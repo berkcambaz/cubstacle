@@ -41,7 +41,7 @@ public class User
 [System.Serializable]
 public class SaveData
 {
-    private int m_score = 0;
+    [SerializeField] private int m_score = 0;
     public int score
     {
         get { return m_score; }
@@ -55,7 +55,7 @@ public class SaveData
 
     public int highscore = 0;
 
-    private int m_level = 1;
+    [SerializeField] private int m_level = 1;
     public int level
     {
         get { return m_level; }
