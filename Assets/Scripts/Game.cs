@@ -6,6 +6,7 @@ public class Game : MonoBehaviour
 {
     public static Game Instance;
 
+    public UIManager uiManager;
     public CameraManager cameraManager;
     public LevelManager levelManager;
 
@@ -34,6 +35,7 @@ public class Game : MonoBehaviour
 
     private void InitManagers()
     {
+        uiManager.Init();
         cameraManager.Init();
         levelManager.Init();
     }
