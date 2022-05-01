@@ -15,6 +15,8 @@ public class Game : MonoBehaviour
         Instance = this;
 
         InitManagers();
+
+        LevelManager.StartLevel();
     }
 
     private void InitManagers()
