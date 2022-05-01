@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     private GameObject player;
     private List<GameObject> levels = new List<GameObject>();
     private Coroutine coroutineLevel;
+    private SeedRandom srandom;
 
     public void Init()
     {
@@ -45,6 +46,7 @@ public class LevelManager : MonoBehaviour
         if (User.state != UserState.Menu) return;
         User.state = UserState.Playing;
         Instance.coroutineLevel = Instance.StartCoroutine(Instance.CoroutineLevel(Utility.GetLevelTime()));
+        Instance.srandom = new SeedRandom(User.data.level);
 
         SpawnPlayer();
         SpawnRandomLevel();
@@ -95,7 +97,8 @@ public class LevelManager : MonoBehaviour
 
     private static void SpawnRandomLevel()
     {
-        Instance.levels.Add(Instantiate(Instance.prefabLevels[0]));
+        int index = Instance.srandom.Number(0, Instance.prefabLevels.Length);
+        Instance.levels.Add(Instantiate(Instance.prefabLevels[index]));
     }
 
     private static void DespawnPlayer()
