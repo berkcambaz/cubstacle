@@ -14,7 +14,7 @@ public class LevelController : MonoBehaviour
         if (!spawnedAnotherLevel && endPoint.position.y < 0f)
         {
             spawnedAnotherLevel = true;
-            LevelManager.SpawnRandomLevel();
+            LevelManager.Progress();
         }
 
         if (endPoint.position.y < -Utility.bounds.y)

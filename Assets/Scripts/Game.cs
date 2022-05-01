@@ -19,6 +19,14 @@ public class Game : MonoBehaviour
         LevelManager.StartLevel();
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            LevelManager.StartLevel();
+        }
+    }
+
     private void InitManagers()
     {
         levelManager.Init();

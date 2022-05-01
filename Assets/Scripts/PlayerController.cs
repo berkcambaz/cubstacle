@@ -16,6 +16,15 @@ public class PlayerController : MonoBehaviour
         ClampToBounds();
     }
 
+    void OnCollisionEnter2D(Collision2D _collision)
+    {
+        ObstacleController obstacle = _collision.transform.GetComponent<ObstacleController>();
+        if (obstacle)
+        {
+            LevelManager.StopLevel();
+        }
+    }
+
     private void GetInput()
     {
         GetInputMouse();

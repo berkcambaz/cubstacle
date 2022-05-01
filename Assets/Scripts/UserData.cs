@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserData
+public class User
 {
+    SaveData data = new SaveData();
+    public static bool playing = false;
+
     public static void Save()
     {
 
@@ -13,4 +16,9 @@ public class UserData
     {
 
     }
+}
+
+public class SaveData
+{
+
 }
