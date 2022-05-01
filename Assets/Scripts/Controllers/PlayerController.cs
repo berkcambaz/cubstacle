@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         ObstacleController obstacle = _collision.transform.GetComponent<ObstacleController>();
         if (obstacle)
         {
+            User.data.score = 0;
             LevelManager.StopLevel();
         }
     }
