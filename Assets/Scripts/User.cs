@@ -41,9 +41,31 @@ public class User
 [System.Serializable]
 public class SaveData
 {
-    public int score = 0;
+    private int m_score = 0;
+    public int score
+    {
+        get { return m_score; }
+        set
+        {
+            m_score = value;
+            if (m_score > highscore) highscore = m_score;
+            UI_Ingame.UpdateScore();
+        }
+    }
+
     public int highscore = 0;
-    public int level = 1;
+
+    private int m_level = 1;
+    public int level
+    {
+        get { return m_level; }
+        set
+        {
+            m_level = value;
+            UI_Ingame.UpdateLevel();
+        }
+    }
+
     public int gold = 0;
 }
 

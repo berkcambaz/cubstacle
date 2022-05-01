@@ -49,14 +49,13 @@ public class LevelManager : MonoBehaviour
 
         DespawnPlayer();
         DespawnLevels();
-        UI_Ingame.UpdateLevel();
         UI_Ingame.StopProgressBar();
     }
 
     private IEnumerator CoroutineLevel(float _time)
     {
         yield return new WaitForSeconds(_time);
-        ++User.data.level;
+        User.data.level++;
         StopLevel();
     }
 
@@ -86,6 +85,11 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(Instance.levels[i]);
         }
+    }
+
+    public static GameObject GetPlayer()
+    {
+        return Instance.player;
     }
 
     private void InitLevels()

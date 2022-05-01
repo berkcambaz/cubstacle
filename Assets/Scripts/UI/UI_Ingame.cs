@@ -24,12 +24,12 @@ public class UI_Ingame : MonoBehaviour
     public static void UpdateScore()
     {
         Instance.textScore.text = User.data.score.ToString();
-        Instance.textHighscore.text = User.data.highscore.ToString();
+        Instance.textHighscore.text = "highscore: " + User.data.highscore.ToString();
     }
 
     public static void UpdateLevel()
     {
-        Instance.textLevel.text = User.data.level.ToString();
+        Instance.textLevel.text = "level" + User.data.level.ToString();
     }
 
     public static void SetButtonStart(bool _active)
