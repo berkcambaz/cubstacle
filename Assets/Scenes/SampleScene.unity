@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  angle: 0
+  scale: 0
 --- !u!1 &945391724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,8 +1105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87bbe5207b7fa34799f6cdada4da9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 1
-  angle: 5
+  time: 0.75
+  scale: 0.125
 --- !u!1 &1578414680
 GameObject:
   m_ObjectHideFlags: 0
