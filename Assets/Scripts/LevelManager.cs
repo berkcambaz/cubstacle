@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     private GameObject[] prefabLevels;
 
     private GameObject player;
-    private List<GameObject> levels;
+    private List<GameObject> levels = new List<GameObject>();
 
     public void Init()
     {
