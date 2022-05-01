@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 762473419}
   - component: {fileID: 762473421}
   - component: {fileID: 762473420}
+  - component: {fileID: 762473422}
   m_Layer: 5
   m_Name: Text Continue
   m_TagString: Untagged
@@ -486,6 +487,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762473418}
   m_CullTransparentMesh: 1
+--- !u!114 &762473422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762473418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87bbe5207b7fa34799f6cdada4da9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  angle: 0
 --- !u!1 &945391724
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +791,8 @@ MonoBehaviour:
   textHighscore: {fileID: 1004157880}
   textLevel: {fileID: 1345404712}
   rectProgress: {fileID: 1578414681}
+  buttonStart: {fileID: 1531410486}
+  buttonContinue: {fileID: 762473418}
 --- !u!1 &1270664885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1024,7 @@ GameObject:
   - component: {fileID: 1531410487}
   - component: {fileID: 1531410489}
   - component: {fileID: 1531410488}
+  - component: {fileID: 1531410490}
   m_Layer: 5
   m_Name: Text Start
   m_TagString: Untagged
@@ -1075,6 +1093,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531410486}
   m_CullTransparentMesh: 1
+--- !u!114 &1531410490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531410486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87bbe5207b7fa34799f6cdada4da9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  angle: 5
 --- !u!1 &1578414680
 GameObject:
   m_ObjectHideFlags: 0
