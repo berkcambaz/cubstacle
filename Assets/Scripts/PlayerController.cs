@@ -41,17 +41,17 @@ public class PlayerController : MonoBehaviour
 
         if (dragging)
         {
-            Vector2 mousePos = Game.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = CameraManager.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
             Vector2 offest = mousePos - dragPos;
             transform.Translate(offest);
-            dragPos = Game.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+            dragPos = CameraManager.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
         }
         else
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             dragging = true;
-            dragPos = Game.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+            dragPos = CameraManager.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 

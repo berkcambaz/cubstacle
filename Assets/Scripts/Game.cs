@@ -6,8 +6,7 @@ public class Game : MonoBehaviour
 {
     public static Game Instance;
 
-    public Camera cam;
-
+    public CameraManager cameraManager;
     public LevelManager levelManager;
 
     void Awake()
@@ -35,6 +34,7 @@ public class Game : MonoBehaviour
 
     private void InitManagers()
     {
+        cameraManager.Init();
         levelManager.Init();
     }
 }
