@@ -23,9 +23,20 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        bool click = Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject();
+
+        switch (User.state)
         {
-            StartLevel();
+            case UserState.Menu:
+                if (click) StartLevel();
+                break;
+            case UserState.Playing:
+                break;
+            case UserState.Paused:
+                if (click) ContinueLevel();
+                break;
+            case UserState.Ending:
+                break;
         }
     }
 
@@ -37,7 +48,6 @@ public class LevelManager : MonoBehaviour
 
         SpawnPlayer();
         SpawnRandomLevel();
-        UI_Ingame.SetButtonStart(false);
         UI_Ingame.StartProgressBar(Utility.GetLevelTime());
     }
 
@@ -50,6 +60,20 @@ public class LevelManager : MonoBehaviour
         DespawnPlayer();
         DespawnLevels();
         UI_Ingame.StopProgressBar();
+    }
+
+    public static void SuspendLevel()
+    {
+        if (User.state != UserState.Playing) return;
+        User.state = UserState.Paused;
+        Time.timeScale = 0f;
+    }
+
+    public static void ContinueLevel()
+    {
+        if (User.state != UserState.Paused) return;
+        User.state = UserState.Playing;
+        Time.timeScale = 1f;
     }
 
     private IEnumerator CoroutineLevel(float _time)

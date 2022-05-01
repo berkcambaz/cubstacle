@@ -5,7 +5,16 @@ using UnityEngine;
 public class User
 {
     public static SaveData data = new SaveData();
-    public static UserState state = UserState.Menu;
+    private static UserState m_state = UserState.Menu;
+    public static UserState state
+    {
+        get { return m_state; }
+        set
+        {
+            m_state = value;
+            UI_Ingame.OnUserStateChange();
+        }
+    }
 
     public static void Save()
     {

@@ -13,12 +13,15 @@ public class UI_Ingame : MonoBehaviour
     public RectTransform rectProgress;
     public GameObject buttonStart;
     public GameObject buttonContinue;
+    public Button buttonPause;
 
     private Coroutine coroutineProgressBar;
 
     public void Init()
     {
         Instance = this;
+
+        buttonPause.onClick.AddListener(ButtonPause);
     }
 
     public static void UpdateScore()
@@ -32,14 +35,31 @@ public class UI_Ingame : MonoBehaviour
         Instance.textLevel.text = $"level {User.data.level}";
     }
 
-    public static void SetButtonStart(bool _active)
+    public static void OnUserStateChange()
     {
-        Instance.buttonStart.SetActive(_active);
-    }
-
-    public static void SetButtonContinue(bool _active)
-    {
-        Instance.buttonContinue.SetActive(_active);
+        switch (User.state)
+        {
+            case UserState.Menu:
+                Instance.buttonStart.SetActive(true);
+                Instance.buttonContinue.SetActive(false);
+                Instance.buttonPause.gameObject.SetActive(false);
+                break;
+            case UserState.Playing:
+                Instance.buttonStart.SetActive(false);
+                Instance.buttonContinue.SetActive(false);
+                Instance.buttonPause.gameObject.SetActive(true);
+                break;
+            case UserState.Paused:
+                Instance.buttonStart.SetActive(false);
+                Instance.buttonContinue.SetActive(true);
+                Instance.buttonPause.gameObject.SetActive(false);
+                break;
+            case UserState.Ending:
+                Instance.buttonStart.SetActive(false);
+                Instance.buttonContinue.SetActive(false);
+                Instance.buttonPause.gameObject.SetActive(false);
+                break;
+        }
     }
 
     public static void StartProgressBar(float _time)
@@ -91,6 +111,10 @@ public class UI_Ingame : MonoBehaviour
         }
 
         User.state = UserState.Menu;
-        UI_Ingame.SetButtonStart(true);
+    }
+
+    private void ButtonPause()
+    {
+        LevelManager.SuspendLevel();
     }
 }
