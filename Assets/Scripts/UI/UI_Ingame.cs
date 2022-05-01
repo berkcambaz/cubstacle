@@ -48,16 +48,15 @@ public class UI_Ingame : MonoBehaviour
 
         float currentTime = 0;
         float normalizedValue = 0;
-
-        while (User.alive)
+        while (true)
         {
-            while (!User.paused)
+            if (currentTime > _time) break;
+
+            if (User.state == UserState.Playing)
             {
-                if (currentTime > _time) yield break;
                 currentTime += Time.deltaTime;
                 normalizedValue = currentTime / _time;
                 rectProgress.localScale = Vector3.Lerp(current, target, normalizedValue);
-                yield return null;
             }
             yield return null;
         }
@@ -78,5 +77,7 @@ public class UI_Ingame : MonoBehaviour
             rectProgress.localScale = Vector3.Lerp(current, target, normalizedValue);
             yield return null;
         }
+
+        User.state = UserState.Menu;
     }
 }

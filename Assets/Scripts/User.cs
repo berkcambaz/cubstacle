@@ -5,9 +5,7 @@ using UnityEngine;
 public class User
 {
     public static SaveData data = new SaveData();
-    public static bool canStart = true;
-    public static bool alive = false;
-    public static bool paused = false;
+    public static UserState state = UserState.Menu;
 
     public static void Save()
     {
@@ -47,4 +45,12 @@ public class SaveData
     public int highscore = 0;
     public int level = 1;
     public int gold = 0;
+}
+
+public enum UserState
+{
+    Menu,
+    Playing,
+    Ending,
+    Paused
 }

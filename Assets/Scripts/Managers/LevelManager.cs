@@ -31,8 +31,8 @@ public class LevelManager : MonoBehaviour
 
     public static void StartLevel()
     {
-        if (User.alive) return;
-        User.alive = true;
+        if (User.state != UserState.Menu) return;
+        User.state = UserState.Playing;
         Instance.coroutineLevel = Instance.StartCoroutine(Instance.CoroutineLevel(Utility.GetLevelTime()));
 
         SpawnPlayer();
@@ -42,8 +42,8 @@ public class LevelManager : MonoBehaviour
 
     public static void StopLevel()
     {
-        if (!User.alive) return;
-        User.alive = false;
+        if (User.state != UserState.Playing) return;
+        User.state = UserState.Ending;
         Instance.StopCoroutine(Instance.coroutineLevel);
 
         DespawnPlayer();
@@ -55,8 +55,8 @@ public class LevelManager : MonoBehaviour
     private IEnumerator CoroutineLevel(float _time)
     {
         yield return new WaitForSeconds(_time);
-        StopLevel();
         ++User.data.level;
+        StopLevel();
     }
 
     public static void Progress()
