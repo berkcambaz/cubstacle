@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public UI_Ingame uiIngame;
+    public UI_Menus uiMenus;
 
     public void Init()
     {
@@ -18,5 +19,6 @@ public class UIManager : MonoBehaviour
     private void InitUIs()
     {
         uiIngame.Init();
+        uiMenus.Init();
     }
 }
