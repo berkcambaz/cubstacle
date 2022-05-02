@@ -76,6 +76,8 @@ public class SaveData
     }
 
     public int gold = 0;
+
+    public bool[] skins;
 }
 
 public enum UserState

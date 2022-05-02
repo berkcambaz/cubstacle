@@ -7,6 +7,8 @@ public class UI_Menus : MonoBehaviour
 {
     public static UI_Menus Instance;
 
+    public UI_SkinMenu uiSkinMenu;
+
     public Text textMenuName;
     public Button buttonNext;
     public Button buttonPrevious;
@@ -16,6 +18,8 @@ public class UI_Menus : MonoBehaviour
     public void Init()
     {
         Instance = this;
+
+        uiSkinMenu.Init();
 
         buttonNext.onClick.AddListener(NextMenu);
         buttonPrevious.onClick.AddListener(PreviousMenu);
