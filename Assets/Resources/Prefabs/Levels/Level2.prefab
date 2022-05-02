@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endPoint: {fileID: 7671176554509616654}
   speed: 5
+  flippable: 1
 --- !u!1 &1232496545785112166
 GameObject:
   m_ObjectHideFlags: 0

@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endPoint: {fileID: 1910368604430040997}
   speed: 5
+  flippable: 1
 --- !u!1001 &1963971674136494365
 PrefabInstance:
   m_ObjectHideFlags: 0
