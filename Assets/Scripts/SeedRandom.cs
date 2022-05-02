@@ -18,4 +18,9 @@ public class SeedRandom
     {
         return random.Next(_minInclusive, _maxExclusive);
     }
+
+    public bool Boolean()
+    {
+        return Number(0, 2) == 0;
+    }
 }

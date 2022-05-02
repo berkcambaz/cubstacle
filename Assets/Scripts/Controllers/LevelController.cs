@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
 
     void OnEnable()
     {
-        if (flippable)
+        if (flippable && LevelManager.Instance.srandom.Boolean())
         {
             Vector3 scale = transform.localScale;
             scale.x = -scale.x;

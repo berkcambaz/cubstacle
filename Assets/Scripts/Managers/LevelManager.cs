@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     private GameObject player;
     private List<GameObject> levels = new List<GameObject>();
     private Coroutine coroutineLevel;
-    private SeedRandom srandom;
+    public SeedRandom srandom;
 
     public void Init()
     {
