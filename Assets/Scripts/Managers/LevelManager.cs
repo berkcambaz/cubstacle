@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
     private static void SpawnRandomLevel()
     {
         int index = Instance.srandom.Number(0, Instance.prefabLevels.Length);
-        index = 3;
+        index = 4;
         Instance.levels.Add(Instantiate(Instance.prefabLevels[index]));
     }
 

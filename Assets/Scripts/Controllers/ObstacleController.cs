@@ -13,10 +13,5 @@ public class ObstacleController : MonoBehaviour
             scored = true;
             User.data.score++;
         }
-
-        if (transform.position.y + transform.localScale.y < -Utility.bounds.y)
-        {
-            Destroy(gameObject);
-        }
     }
 }
