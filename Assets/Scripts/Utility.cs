@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Utility
@@ -16,6 +14,6 @@ public class Utility
 
     public static float GetLevelTime()
     {
-        return 5f + Mathf.Clamp((User.data.level - 1) * 0.1f, 0f, 25f);
+        return 15f + Mathf.Clamp((User.data.level - 1) * 0.1f, 0f, 25f);
     }
 }
